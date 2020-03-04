@@ -8,7 +8,7 @@ client.connect(3001, 'localhost', () => {}) //temp hardcode of address
 
 // How does a chat app work? % node app.js
 
-let name;
+let name
 const messages = []
 
 function sendMessage(text) {
@@ -48,9 +48,9 @@ client.on('data', data => {
 
 async function getName(){
   console.clear()
-  const input = await inquirer.prompt([{name: 'name', message: 'what is your name?'}])
+  const input = await inquirer.prompt([{name: 'name', message: 'Hi! What is your name?'}])
   name = input.name;
-  console.log('your name is', name);
+  console.log(`Your name is "${name}"`);
 }
 
 async function getInput () {
@@ -65,3 +65,5 @@ async function getInput () {
 
 getName()
 getInput()
+
+module.exports = { getName, getInput }

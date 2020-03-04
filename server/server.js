@@ -5,10 +5,11 @@
 const net = require('net')
 const server = net.createServer()
 
+require('dotenv').config()
 const PORT = process.env.PORT || 3001
 
 server.listen(PORT, () => {
-  console.log(`Server up on ${PORT}`);
+  console.log(`Server up, listening on ${PORT}`)
 })
 
 const socketPool = {}
@@ -23,24 +24,23 @@ server.on('connection', socket => { // whatever socket connected, make more even
 server.on('error', err => console.error('SERVER ERROR', err))
 
 
-// when we get some data,
+// when we get some data, do stuff with the buffer
 
 function doWithBuffer(id, buffer) {
   const message = JSON.parse(buffer.toString().trim())
+  console.log(message);
+  console.log(id);
   broadcast(id, message)
 }
 
+// decide how to broadcast it
+
 function broadcast(id, message) {
-  socketPool[id]
-  console.log(message)
-  console.log('payload.messageType:', message.messageType)
   if (message.messageType === 'personal') {
-    console.log('UNIQUE PRINT to', id)
     const payload = JSON.stringify(message)
     socketPool[id].write(payload)
   } else {
     for (const socket in socketPool) {
-      console.log('PRINTED TO EVERYONE')
       const payload = JSON.stringify(message)
       socketPool[socket].write(payload)
     }
