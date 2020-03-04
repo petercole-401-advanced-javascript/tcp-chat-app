@@ -12,14 +12,26 @@ let name;
 const messages = []
 
 function sendMessage(text) {
-  let message;
-  if (text.substr(0,4) === '/me'){
-    message = `${name} ${text}`
+  let message
+  let messageType
+  // if the message looks like "/me smiles" treat it as an emote
+  // should output: Emily smiles
+  // Otherwise treat the message as a chat message
+  // should output: <Emily> hello, world
+  if (text.substr(0, 4) === '/me ') { // ME + MESSAGE
+    message = `${name} ${text.substr(4)}`
+  } else if(text.substr(0, 5) === '/time'){ // PRINT TIME
+    message = new Date().toLocaleString();
+    messageType = 'personal'
+    console.log(`TIME ${new Date().toLocaleString()}`);
+  } else {
+    message = `<${name}> ${text}`
+    messageType = 'group'
   }
-
   const event = JSON.stringify({
     eventType: 'message',
-    payload: `<${name}> ${text}` // <Peter> sup
+    messageType: messageType,
+    payload: message
   })
   client.write(event)
 }
