@@ -11,7 +11,7 @@ Possible examples of ways you could extend the app:
   - Note: these commands should only return a response to the user who sent them!
 - Whatever you can think of! -->
 
-__Version:__ 1.0.0  
+__Version:__ 1.0.1  
 __Author:__ Peter Cole, Kevin Dreyer, Eugene Monnier
 
 ### Links and Resources
