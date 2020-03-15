@@ -16,7 +16,7 @@ __Author:__ Peter Cole, Kevin Dreyer, Eugene Monnier
 
 ### Links and Resources
 
-- [Submission PR](https://github.com/petercole-401-advanced-javascript/tcp-chat-app/pull/1)
+- [Submission PR](https://github.com/petercole-401-advanced-javascript/tcp-chat-app/pull/2)
 <!-- - [Swagger Docs]() -->
 <!-- - [ci/cd](../master/.github/workflows/nodejs.yml) (GitHub Actions) -->
 <!-- - [Back-end Server URL](http://xyz.com) (when applicable) -->
@@ -31,14 +31,14 @@ __Author:__ Peter Cole, Kevin Dreyer, Eugene Monnier
 
 #### How to initialize/run your application (where applicable)
 
-- Start server `node server.js`
-- Start app `node app.js`
-  - Enter name
-  - Check time with `/time`
+- Start server from the server directory in one terminal tab`npm start`
+- Start app from the client directory in another terminal tab `npm start`
+  - Enter name, then chat with any connected sockets
+  - Check time with `/time`, this will only print to the user's socket
 
 #### Tests
 
-- Use `npm test app.test.js` or `npm run test`
+- Use `npm test app.test.js` `npm test server.test.js ` or `npm run test`
 <!-- - Any tests of note?
   - Functional server and category additions -->
 <!-- - Describe any tests that you did not complete, skipped, etc
